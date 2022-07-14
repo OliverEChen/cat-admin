@@ -39,3 +39,14 @@ export const asyncRouterMap: any = [
     ],
   },
 ];
+
+export const constantRouterMap: any = [
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/user/Login.vue"),
+    meta: {
+      title: "登录"
+    }
+  },
+];
