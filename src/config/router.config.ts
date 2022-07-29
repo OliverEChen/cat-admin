@@ -44,7 +44,7 @@ export const constantRouterMap: any = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/views/user/Login.vue"),
+    component: () => import("@/views/login/index.vue"),
     meta: {
       title: "登录"
     }
