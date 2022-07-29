@@ -1,14 +1,26 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import { asyncRouterMap, constantRouterMap } from "@/config/router.config"; 
+import router from './router'
 
-const routes: Array<RouteRecordRaw> = [
-  ...asyncRouterMap,
-  ...constantRouterMap
-];
-
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+/**
+ * @description 路由拦截 beforeEach
+ * */
+router.beforeEach((to, from, next) => {
+  const ACCESSLOGIN = window.localStorage.getItem('isLogin')
+  if(ACCESSLOGIN){
+    if(to.path === '/login'){
+      next('/')
+    }else {
+      next()
+    }
+  }else {
+    if(to.path === '/login') {
+      next()
+    }else {
+      next('/login')
+    }
+  }
 });
+
+// router.afterEach(() => {
+// });
 
 export default router;
