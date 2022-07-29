@@ -7,19 +7,21 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-      <div style="text-align: left; margin-left: 10px;">
-        <menu-unfold-outlined
-          v-if="collapsed"
-          class="trigger"
-          @click="() => (collapsed = !collapsed)"
-        />
-        <menu-fold-outlined
-          v-else
-          class="trigger"
-          @click="() => (collapsed = !collapsed)"
-        />
-      </div>
-        
+        <div style="display: flex; justify-content: space-between">
+          <div style="text-align: left; margin-left: 10px;">
+            <menu-unfold-outlined
+                v-if="collapsed"
+                class="trigger"
+                @click="() => (collapsed = !collapsed)"
+            />
+            <menu-fold-outlined
+                v-else
+                class="trigger"
+                @click="() => (collapsed = !collapsed)"
+            />
+          </div>
+          <div style="margin-right: 10px; cursor: pointer;" @click="logout">退出</div>
+        </div>
       </a-layout-header>
       <a-layout-content
         :style="{
@@ -53,10 +55,16 @@ export default defineComponent({
     MenuFoldOutlined,
     Menu
   },
+
   setup() {
+    const logout = () => {
+      window.localStorage.removeItem('isLogin')
+      window.location.reload()
+    }
     return {
       selectedKeys: ref<string[]>(["1"]),
       collapsed: ref<boolean>(false),
+      logout
     };
   },
 });
