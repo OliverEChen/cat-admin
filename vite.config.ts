@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslintPlugin from "vite-plugin-eslint";
 import {resolve} from 'path'
+import {log} from "util";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,10 +27,9 @@ export default defineConfig({
     open: true,
     cors: true,
     // https: false,
-    // 代理跨域（mock 不需要配置，这里只是个事列）
     proxy: {
       "/api": {
-        // target: "https://mock.mengxuegu.com/mock/629d727e6163854a32e8307e", // easymock
+        target: "http://192.168.18.146:9080", //
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, "")
       }
