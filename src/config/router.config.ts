@@ -3,50 +3,50 @@ import BasicLayout from '@/layout/Index.vue'
 
 export const asyncRouterMap: any = [
   {
-    path: "/",
-    name: "index",
+    path: '/',
+    name: 'index',
     component: BasicLayout,
-    redirect: "/index",
+    redirect: '/index',
     children: [
       // 首页
       {
-        path: "/index",
-        name: "index",
-        component: () => import("@/views/HomeView.vue"),
+        path: '/index',
+        name: 'index',
+        component: () => import('@/views/index/Index.vue'),
         meta: {
           title: '首页'
         }
       },
       // 关于
       {
-        path: "/about",
-        name: "about",
+        path: '/about',
+        name: 'about',
         meta: {
           title: '关于'
         },
-        redirect: "/about",
+        redirect: '/about',
         children: [
           {
             path: '/about',
-            name: "about",
-            component: () => import("@/views/AboutView.vue"),
+            name: 'about',
+            component: () => import('@/views/about/Index.vue'),
             meta: {
               title: '关于'
-            },
-          },
-        ],
-      },
-    ],
-  },
-];
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
 
 export const constantRouterMap: any = [
   {
-    path: "/login",
-    name: "login",
-    component: () => import("@/views/login/Index.vue"),
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/Index.vue'),
     meta: {
-      title: "登录"
+      title: '登录'
     }
-  },
-];
+  }
+]

@@ -1,27 +1,12 @@
 <template>
   <a-layout>
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-      <div style="height:30px;line-height: 30px; color: white;">logo</div>
-      <!-- <div class="logo" /> -->
-      <Menu></Menu>
+      <Logo :collapsed="collapsed"></Logo>
+      <CMenu></CMenu>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <div style="display: flex; justify-content: space-between">
-          <div style="text-align: left; margin-left: 10px;">
-            <menu-unfold-outlined
-                v-if="collapsed"
-                class="trigger"
-                @click="() => (collapsed = !collapsed)"
-            />
-            <menu-fold-outlined
-                v-else
-                class="trigger"
-                @click="() => (collapsed = !collapsed)"
-            />
-          </div>
-          <div style="margin-right: 10px; cursor: pointer;" @click="logout">退出</div>
-        </div>
+        <CHeader :collapsedFn="collapsedFn" :collapsed="collapsed"></CHeader>
       </a-layout-header>
       <a-layout-content
         :style="{
@@ -37,37 +22,29 @@
   </a-layout>
 </template>
 <script lang="ts">
-import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-} from "@ant-design/icons-vue";
-import Menu from '@/components/menu/Menu.vue';
-import { defineComponent, ref } from "vue";
+import CMenu from '@/components/menu/CMenu.vue'
+import Logo from './Logo.vue'
+import CHeader from './CHeader.vue'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    Menu
+    CMenu,
+    Logo,
+    CHeader
   },
 
-  setup() {
-    const logout = () => {
-      window.localStorage.removeItem('isLogin')
-      window.location.reload()
+  setup () {
+    const collapsed = ref<boolean>(false)
+    const collapsedFn = () => {
+      collapsed.value = !collapsed.value
     }
     return {
-      selectedKeys: ref<string[]>(["1"]),
-      collapsed: ref<boolean>(false),
-      logout
-    };
-  },
-});
+      selectedKeys: ref<string[]>(['1']),
+      collapsed,
+      collapsedFn
+    }
+  }
+})
 </script>
 <style>
 .ant-layout {

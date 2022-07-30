@@ -24,13 +24,11 @@
   </div>
 </template>
 <script lang="ts" >
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from 'vue'
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   PieChartOutlined,
-  MailOutlined,
-} from '@ant-design/icons-vue';
+  MailOutlined
+} from '@ant-design/icons-vue'
 import router from '@/router/index'
 import { useRoute } from '@/store/modules/useRoute'
 
@@ -40,11 +38,11 @@ const SubMenu = {
   props: {
     menuInfo: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     navTo: {
-        type: Function,
-        default: null
+      type: Function,
+      default: null
     }
   },
   template: `
@@ -68,26 +66,24 @@ const SubMenu = {
   `,
   components: {
     PieChartOutlined,
-    MailOutlined,
+    MailOutlined
   }
-};
+}
 export default defineComponent({
   components: {
     'sub-menu': SubMenu,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    PieChartOutlined,
+    PieChartOutlined
   },
-  setup() {
+  setup () {
     const list = useRoute().routeForMenu
 
-    const collapsed = ref<boolean>(false);
+    const collapsed = ref<boolean>(false)
 
     const toggleCollapsed = () => {
-      collapsed.value = !collapsed.value;
-    };
+      collapsed.value = !collapsed.value
+    }
     const navTo = (path: string) => {
-        router.push(path)
+      router.push(path)
     }
     return {
       list,
@@ -95,9 +91,8 @@ export default defineComponent({
       toggleCollapsed,
       navTo,
       selectedKeys: ref(['1']),
-      openKeys: ref(['2']),
-    };
-  },
-});
+      openKeys: ref(['2'])
+    }
+  }
+})
 </script>
-

@@ -34,7 +34,7 @@
   </a-form>
 </template>
 <script lang="ts" name="loginForm">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive } from 'vue'
 import { useUser } from '@/store/modules/useUser'
 import router from '@/router/index'
 interface FormState {
@@ -43,32 +43,30 @@ interface FormState {
   remember: boolean;
 }
 export default defineComponent({
-  setup() {
+  setup () {
     const store = useUser()
     const formState = reactive<FormState>({
       username: '',
       password: '',
-      remember: true,
-    });
+      remember: true
+    })
     const onFinish = (values: any) => {
-      console.log('Success:', values);
+      console.log('Success:', values)
       console.log('matchUser', store.matchUser(values))
-      if(store.matchUser(values)){
+      if (store.matchUser(values)) {
         window.localStorage.setItem('isLogin', store.matchUser(values).toString())
         router.replace('/')
       }
-    };
+    }
 
     const onFinishFailed = (errorInfo: any) => {
-      console.log('Failed:', errorInfo);
-    };
+      console.log('Failed:', errorInfo)
+    }
     return {
       formState,
       onFinish,
-      onFinishFailed,
-    };
-  },
-});
+      onFinishFailed
+    }
+  }
+})
 </script>
-
-

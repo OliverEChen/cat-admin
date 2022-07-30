@@ -5,22 +5,22 @@ import router from './router'
  * */
 router.beforeEach((to, from, next) => {
   const ACCESSLOGIN = window.localStorage.getItem('isLogin')
-  if(ACCESSLOGIN){
-    if(to.path === '/login'){
+  if (ACCESSLOGIN) {
+    if (to.path === '/login') {
       next('/')
-    }else {
+    } else {
       next()
     }
-  }else {
-    if(to.path === '/login') {
+  } else {
+    if (to.path === '/login') {
       next()
-    }else {
+    } else {
       next('/login')
     }
   }
-});
+})
 
 // router.afterEach(() => {
 // });
 
-export default router;
+export default router
