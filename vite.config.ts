@@ -1,15 +1,12 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import eslintPlugin from "vite-plugin-eslint";
 import {resolve} from 'path'
 import {log} from "util";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-      vue(),
-    // * EsLint 报错信息显示在浏览器界面上
-    eslintPlugin(),
+      vue()
   ],
   resolve: {
     alias: {
