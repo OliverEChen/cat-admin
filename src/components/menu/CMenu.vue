@@ -1,13 +1,7 @@
 <template>
   <div>
-    <a-menu
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
-      mode="inline"
-      theme="dark"
-      :inline-collapsed="collapsed"
-    >
-      <template v-for="(item) in list" :key="item.key">
+    <a-menu v-model:openKeys="openKeys" v-model:selectedKeys="selectedKeys" mode="inline" theme="dark" :inline-collapsed="collapsed">
+      <template v-for="item in list" :key="item.key">
         <template v-if="!item.children">
           <a-menu-item :key="item.key" @click="navTo(item.path)">
             <template #icon>
@@ -17,18 +11,15 @@
           </a-menu-item>
         </template>
         <template v-else>
-          <sub-menu :key="item.key" :menu-info="item" :navTo="navTo"/>
+          <sub-menu :key="item.key" :menu-info="item" :navTo="navTo" />
         </template>
       </template>
     </a-menu>
   </div>
 </template>
-<script lang="ts" >
+<script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {
-  PieChartOutlined,
-  MailOutlined
-} from '@ant-design/icons-vue'
+import { PieChartOutlined, MailOutlined } from '@ant-design/icons-vue'
 import router from '@/router/index'
 import { useRoute } from '@/store/modules/useRoute'
 
@@ -74,7 +65,7 @@ export default defineComponent({
     'sub-menu': SubMenu,
     PieChartOutlined
   },
-  setup () {
+  setup() {
     const list = useRoute().routeForMenu
 
     const collapsed = ref<boolean>(false)

@@ -14,7 +14,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.logo{
+.logo {
   height: 50px;
   line-height: 50px;
   font-size: 24px;

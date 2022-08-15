@@ -8,20 +8,12 @@
     @finish="onFinish"
     @finishFailed="onFinishFailed"
   >
-    <a-form-item
-      label="Username"
-      name="username"
-      :rules="[{ required: true, message: 'Please input your username!' }]"
-    >
-      <a-input v-model:value="formState.username" placeholder="cat"/>
+    <a-form-item label="Username" name="username" :rules="[{ required: true, message: 'Please input your username!' }]">
+      <a-input v-model:value="formState.username" placeholder="cat" />
     </a-form-item>
 
-    <a-form-item
-      label="Password"
-      name="password"
-      :rules="[{ required: true, message: 'Please input your password!' }]"
-    >
-      <a-input-password v-model:value="formState.password" placeholder="admin"/>
+    <a-form-item label="Password" name="password" :rules="[{ required: true, message: 'Please input your password!' }]">
+      <a-input-password v-model:value="formState.password" placeholder="admin" />
     </a-form-item>
 
     <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
@@ -38,12 +30,12 @@ import { defineComponent, reactive } from 'vue'
 import { useUser } from '@/store/modules/useUser'
 import router from '@/router/index'
 interface FormState {
-  username: string;
-  password: string;
-  remember: boolean;
+  username: string
+  password: string
+  remember: boolean
 }
 export default defineComponent({
-  setup () {
+  setup() {
     const store = useUser()
     const formState = reactive<FormState>({
       username: '',

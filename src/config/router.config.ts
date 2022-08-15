@@ -12,7 +12,7 @@ export const asyncRouterMap: any = [
       {
         path: '/index',
         name: 'index',
-        component: () => import('@/views/index/Index.vue'),
+        component: () => import('@/views/index/index.vue'),
         meta: {
           title: '首页'
         }
@@ -29,12 +29,21 @@ export const asyncRouterMap: any = [
           {
             path: '/about',
             name: 'about',
-            component: () => import('@/views/about/Index.vue'),
+            component: () => import('@/views/about/index.vue'),
             meta: {
               title: '关于'
             }
           }
         ]
+      },
+      // 地图
+      {
+        path: '/map',
+        name: 'map',
+        component: () => import('@/views/map/index.vue'),
+        meta: {
+          title: '地图'
+        }
       }
     ]
   }
@@ -44,7 +53,7 @@ export const constantRouterMap: any = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/Index.vue'),
+    component: () => import('@/views/login/index.vue'),
     meta: {
       title: '登录'
     }
