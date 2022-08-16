@@ -21,12 +21,13 @@
     </a-form-item>
 
     <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-      <a-button type="primary" html-type="submit">Submit</a-button>
+      <a-button type="primary" html-type="submit">登录</a-button>
     </a-form-item>
   </a-form>
 </template>
 <script lang="ts" name="loginForm">
 import { defineComponent, reactive } from 'vue'
+import { notification } from 'ant-design-vue'
 import { useUser } from '@/store/modules/useUser'
 import router from '@/router/index'
 interface FormState {
@@ -42,12 +43,21 @@ export default defineComponent({
       password: '',
       remember: true
     })
+    const openNotification = () => {
+      notification.open({
+        message: 'Notification Title',
+        description: '登录失败，请检查账号或密码是否正确！',
+        duration: 4
+      })
+    }
     const onFinish = (values: any) => {
-      console.log('Success:', values)
       console.log('matchUser', store.matchUser(values))
       if (store.matchUser(values)) {
+        console.log('Success:', values)
         window.localStorage.setItem('isLogin', store.matchUser(values).toString())
         router.replace('/')
+      } else {
+        openNotification()
       }
     }
 

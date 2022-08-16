@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --host",
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
-    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },

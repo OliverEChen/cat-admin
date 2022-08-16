@@ -9,14 +9,14 @@
           <img class="login-icon" src="@/assets/images/logo.svg" alt="" />
           <div class="logo-text">Cat-Admin</div>
         </div>
-        <LoginForm />
+        <loginForm />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup name="login">
-import LoginForm from './components/LoginForm.vue'
+import loginForm from './components/loginForm.vue'
 </script>
 
 <style scoped lang="scss">
